@@ -1,0 +1,23 @@
+{
+  "name": "hk-dp",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "DP 교환소 — 포인트↔DP, DP→현물. 주식판과 같은 Firebase 프로젝트(hk-chess-betting). GitHub Pages.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "build:ghpages": "cross-env DEPLOY_TARGET=ghpages vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "firebase": "^10.14.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.2",
+    "cross-env": "^7.0.3",
+    "vite": "^5.4.8"
+  }
+}
