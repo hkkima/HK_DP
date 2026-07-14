@@ -1,0 +1,3 @@
+[submodule "vendor/hk-hub"]
+	path = vendor/hk-hub
+	url = https://github.com/hkkima/HK_Hub.git
