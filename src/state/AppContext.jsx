@@ -5,7 +5,7 @@ import {
   subscribeAllDpAccounts, subscribeMyRedemptions, subscribeAllRedemptions,
   getUser, getUserByName,
 } from '../data/store.js';
-import { nameToUserId, verifyPin } from '../auth/auth.js';
+import { nameToUserId, verifyPin } from '@hk/shared';
 
 const Ctx = createContext(null);
 export const useApp = () => useContext(Ctx);
