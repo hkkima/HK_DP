@@ -30,7 +30,7 @@ export default function CatalogPage() {
       <div className="card">
         <h3>현물 상품 카탈로그</h3>
         {redeemOff && <div className="banner">현재 상품 교환이 일시 중지되었습니다.</div>}
-        {isParticipant && <p className="muted">보유 DP: <b className="mono" style={{ color: 'var(--accent2)' }}>{dp.toLocaleString()}</b></p>}
+        {isParticipant && <p className="muted">보유 DP: <b className="mono" style={{ color: 'var(--accent-2)' }}>{dp.toLocaleString()}</b></p>}
         <div className="grid">
           {goods.filter((g) => g.active !== false).map((g) => {
             const out = (g.stock || 0) <= 0;
@@ -52,7 +52,7 @@ export default function CatalogPage() {
           })}
           {goods.length === 0 && <p className="muted">등록된 상품이 없습니다.</p>}
         </div>
-        {msg && <p style={{ color: 'var(--ok)' }}>{msg}</p>}
+        {msg && <p style={{ color: 'var(--positive)' }}>{msg}</p>}
         {err && <p className="err">{err}</p>}
       </div>
 
