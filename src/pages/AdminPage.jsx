@@ -50,7 +50,7 @@ function GrantSection({ users, allDp }) {
         <button className="primary" disabled={busy} onClick={submit}>지급</button>
       </div>
       <p className="muted">음수면 회수. 전체 지급은 모든 계정에 적용됩니다.</p>
-      {msg && <p style={{ color: 'var(--ok)' }}>{msg}</p>}
+      {msg && <p style={{ color: 'var(--positive)' }}>{msg}</p>}
       {err && <p className="err">{err}</p>}
     </div>
   );
@@ -70,7 +70,7 @@ function GoodsRow({ g }) {
       <td>
         <button className="ghost" disabled={busy}
           onClick={() => run(() => upsertGoods({ id: g.id, priceDP: Number(priceDP), stock: Number(stock), active }), () => '저장됨')}>저장</button>
-        {msg && <span style={{ color: 'var(--ok)', marginLeft: 6 }}>{msg}</span>}
+        {msg && <span style={{ color: 'var(--positive)', marginLeft: 6 }}>{msg}</span>}
         {err && <span className="err" style={{ marginLeft: 6 }}>{err}</span>}
       </td>
     </tr>
@@ -99,7 +99,7 @@ function GoodsSection({ goods }) {
         <button className="primary" disabled={busy || !id || !name}
           onClick={() => run(() => upsertGoods({ id, name, priceDP: Number(priceDP), stock: Number(stock), active: true }), () => '추가됨')}>추가</button>
       </div>
-      {msg && <p style={{ color: 'var(--ok)' }}>{msg}</p>}
+      {msg && <p style={{ color: 'var(--positive)' }}>{msg}</p>}
       {err && <p className="err">{err}</p>}
     </div>
   );
@@ -155,7 +155,7 @@ function ParamsSection({ config }) {
           onClick={() => run(() => setDpParams({ R0: Number(R0), k: Number(k), exp: Number(exp), convertEnabled, redeemEnabled }), () => '저장됨')}>저장</button>
       </div>
       <p className="muted">확정값: R0=10,000 · k=1,000 · 지수=2(2차곡선). 곡선은 매주 초기화.</p>
-      {msg && <p style={{ color: 'var(--ok)' }}>{msg}</p>}
+      {msg && <p style={{ color: 'var(--positive)' }}>{msg}</p>}
       {err && <p className="err">{err}</p>}
     </div>
   );

@@ -31,14 +31,14 @@ export default function App() {
         </nav>
         <div className="spacer" />
         {isParticipant && myUser && <span className="balance mono">{(myUser.balance || 0).toLocaleString()} P</span>}
-        {isParticipant && <span className="balance mono" style={{ color: 'var(--accent2)' }}>{(myDp.dp || 0).toLocaleString()} DP</span>}
+        {isParticipant && <span className="balance mono" style={{ color: 'var(--accent-2)' }}>{(myDp.dp || 0).toLocaleString()} DP</span>}
         <span className="muted">{who}</span>
         {session.role !== 'guest' && <button className="ghost" onClick={logout}>로그아웃</button>}
       </header>
 
       <div className="wrap">
         {adminReauthNeeded && (
-          <div className="banner" style={{ borderColor: 'var(--bad)', color: 'var(--bad)' }}>
+          <div className="banner danger">
             🔑 운영자 구글 인증이 만료됐습니다(지급·승인 등 운영자 동작 불가).
             <button className="primary" style={{ marginLeft: 8 }} onClick={reauth}>Google로 다시 로그인</button>
           </div>

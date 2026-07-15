@@ -46,7 +46,7 @@ export default function ExchangePage() {
     <div>
       <div className="grid" style={{ marginBottom: 14 }}>
         <div className="stat"><div className="lab">내 포인트</div><div className="num mono">{balance.toLocaleString()} P</div></div>
-        <div className="stat"><div className="lab">내 DP</div><div className="num mono" style={{ color: 'var(--accent2)' }}>{(myDp.dp || 0).toLocaleString()}</div></div>
+        <div className="stat"><div className="lab">내 DP</div><div className="num mono" style={{ color: 'var(--accent-2)' }}>{(myDp.dp || 0).toLocaleString()}</div></div>
         <div className="stat"><div className="lab">이번 주 매수</div><div className="num mono">{weekCount} 개</div></div>
         <div className="stat"><div className="lab">다음 1개 가격</div><div className="num mono">{nextPrice.toLocaleString()} P</div></div>
       </div>
@@ -66,7 +66,7 @@ export default function ExchangePage() {
         <p className="muted" style={{ marginTop: 8 }}>
           지금 잔액으로 이번 주 최대 <b>{affordable}</b>개까지 가능. {cost > balance && <span className="err">포인트가 부족합니다.</span>}
         </p>
-        {msg && <p style={{ color: 'var(--ok)' }}>{msg}</p>}
+        {msg && <p style={{ color: 'var(--positive)' }}>{msg}</p>}
         {err && <p className="err">{err}</p>}
       </div>
 
