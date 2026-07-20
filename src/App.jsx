@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useApp } from './state/AppContext.jsx';
 import ExchangePage from './pages/ExchangePage.jsx';
 import CatalogPage from './pages/CatalogPage.jsx';
+import TeamExchangePage from './pages/TeamExchangePage.jsx';
 import AdminPage from './pages/AdminPage.jsx';
 import LoginPage from './pages/LoginPage.jsx';
 
@@ -24,6 +25,7 @@ export default function App() {
         <nav className="tabs">
           <button className={tab === 'exchange' ? 'active' : ''} onClick={() => setTab('exchange')}>교환소</button>
           <button className={tab === 'catalog' ? 'active' : ''} onClick={() => setTab('catalog')}>상품</button>
+          <button className={tab === 'team' ? 'active' : ''} onClick={() => setTab('team')}>팀 교환</button>
           {isAdmin && <button className={tab === 'admin' ? 'active' : ''} onClick={() => setTab('admin')}>운영자</button>}
           <button className={tab === 'login' ? 'active' : ''} onClick={() => setTab('login')}>
             {session.role === 'guest' ? '로그인' : '계정'}
@@ -50,6 +52,7 @@ export default function App() {
         )}
         {tab === 'exchange' && <ExchangePage />}
         {tab === 'catalog' && <CatalogPage />}
+        {tab === 'team' && <TeamExchangePage />}
         {tab === 'admin' && isAdmin && <AdminPage />}
         {tab === 'login' && <LoginPage />}
       </div>

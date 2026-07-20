@@ -39,6 +39,28 @@ export function subscribeAllRedemptions(cb) {
     () => cb([]));
 }
 
+// ── 팀 교환(팀 포인트) — ★팀 = 주식★ ────────────────────
+//   팀 금고는 stocks/{id}.corpBalance, 가격표는 meta/corpServices, 주문은 corpOrders.
+//   전부 공개 읽기(rules). 구매는 redeemCorpService 콜러블(CEO + PIN 검증).
+export function subscribeTeams(cb) {
+  return onSnapshot(collection(db(), 'stocks'), (snap) =>
+    cb(snap.docs.map((d) => ({ id: d.id, ...d.data() }))), () => cb([]));
+}
+export function subscribeCorpServices(cb) {
+  return onSnapshot(doc(db(), 'meta', 'corpServices'),
+    (snap) => cb(snap.exists() ? (snap.data().services || {}) : {}), () => cb({}));
+}
+// where + orderBy 복합은 색인을 요구하므로 where 만 쓰고 정렬은 클라에서.
+export function subscribeCorpOrders(stockId, cb) {
+  return onSnapshot(query(collection(db(), 'corpOrders'), where('stockId', '==', stockId)),
+    (snap) => cb(snap.docs.map((d) => ({ id: d.id, ...d.data() }))
+      .sort((a, b) => (b.ts?.seconds || 0) - (a.ts?.seconds || 0)).slice(0, 20)),
+    () => cb([]));
+}
+export async function redeemCorpService({ stockId, ceoUserId, pinHash, service, params }) {
+  return (await callable('redeemCorpService')({ stockId, ceoUserId, pinHash, service, params })).data;
+}
+
 // ── 계정(주식·베팅판과 공유) ─────────────────────────────
 export async function getUser(userId) {
   const snap = await getDoc(doc(db(), 'users', userId));
